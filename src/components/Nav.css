@@ -1,0 +1,44 @@
+.navbar {
+    background-color: #000000;
+    padding: 10px;
+    display: flex;
+    justify-content: center; /* Centra la lista horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    border-radius: 10px;
+  }
+  
+  .nav-list {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-item {
+    margin: 0 10px;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 6px;
+    transition: 0.4s;
+  }
+
+  .nav-link:hover{
+    background-color: rgb(253, 253, 245);
+    color: #000000;
+    padding: 7px;
+    border-radius: 8px;
+  }
+  
+  /* Estilos para dispositivos móviles */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+    }
+  
+    .nav-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
