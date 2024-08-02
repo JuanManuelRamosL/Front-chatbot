@@ -49,48 +49,61 @@ const Quiz = () => {
   return (
     <div className="contenedor-preguntas">
       <h1 className="titulo">IAGym</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <p style={{ whiteSpace: "pre-line", color: "white" }}>
-            {currentQuestion.question}
-          </p>
+      <form onSubmit={handleSubmit} className="form-ejercicios">
+        <div className="horizontal-containers">
+          <div className="container-ejercicio">
+            <p
+              style={{ whiteSpace: "pre-line", color: "#fff" }}
+              className="ejercicio"
+            >
+              {currentQuestion.question}
+            </p>
+          </div>
+          <div className="container-options">
+            <p className="subtitulo">Select an answer:</p>
+            {currentQuestion.options.map((option) => (
+              <div key={option.id} className="option-respuesta">
+                <input
+                  type="radio"
+                  id={option.id}
+                  name="answer"
+                  value={option.text}
+                  checked={selectedAnswer === option.text}
+                  onChange={(e) => setSelectedAnswer(e.target.value)}
+                  required
+                  className="option-circle"
+                />
+                <label className="opccion" htmlFor={option.id}>
+                  {option.text}
+                </label>
+              </div>
+            ))}
+          </div>
         </div>
-        <div>
-          <p className="subtitulo">Select an answer:</p>
-          {currentQuestion.options.map((option) => (
-            <div key={option.id}>
-              <input
-                type="radio"
-                id={option.id}
-                name="answer"
-                value={option.text}
-                checked={selectedAnswer === option.text}
-                onChange={(e) => setSelectedAnswer(e.target.value)}
-                required
-              />
-              <label className="opccion" htmlFor={option.id}>
-                {option.text}
-              </label>
-            </div>
-          ))}
+        <div className="container-buttons">
+          <button type="submit" className="button">
+            <span className="text">Enviar</span>
+          </button>
+          <button onClick={handleNewQuestion} className="button">
+            {" "}
+            <span className="text">Nueva Pregunta</span>
+          </button>
         </div>
-        <button type="submit">Enviar</button>
       </form>
-      <button onClick={handleNewQuestion}>Nueva Pregunta</button>
       {feedback && (
         <div
-          className="fedback"
-          style={{
-            backgroundColor: feedback.startsWith("¡Respuesta correcta!")
-              ? "green"
-              : "red",
-          }}
+          className={`fedback ${
+            feedback.startsWith("¡Respuesta correcta!")
+              ? "correcta"
+              : "incorrecta"
+          }`}
         >
           <h2 className="titulo-explicacion">{feedback}</h2>
         </div>
       )}
+
       {explanation && (
-        <div>
+        <div className="container-explicacion">
           <h2 className="titulo-explicacion">Explicacion:</h2>
           <p className="respuesta">{explanation}</p>
         </div>

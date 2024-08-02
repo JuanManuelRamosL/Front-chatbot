@@ -8,14 +8,14 @@ import Nav from "./components/nav";
 function App() {
   return (
     <Router>
-      <div>
+      
         <Nav></Nav>
 
         <Routes>
           <Route path="/" element={<Chat />} />
           <Route path="/preguntas" element={<Quiz />} />
         </Routes>
-      </div>
+      
     </Router>
   );
 }

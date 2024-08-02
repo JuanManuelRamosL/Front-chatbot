@@ -5,8 +5,7 @@ import "./Nav.css";
 
 function Nav() {
   return (
-    <div className="navbar">
-      <nav className="nav">
+      <nav className="navbar">
         <ul className="nav-list">
           <li className="nav-item">
             <Link to="/" className="nav-link">
@@ -20,7 +19,6 @@ function Nav() {
           </li>
         </ul>
       </nav>
-    </div>
   );
 }
 

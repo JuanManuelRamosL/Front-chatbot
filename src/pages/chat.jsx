@@ -39,6 +39,7 @@ function Chat() {
         {messages.map((message, index) => (
           <div key={index} className={`chat-message ${message.sender}`}>
             <p>{message.text}</p>
+            {/* <small className="horario-message">18:30hs</small> */}
           </div>
         ))}
       </div>

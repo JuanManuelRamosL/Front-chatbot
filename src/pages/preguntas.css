@@ -1,34 +1,253 @@
-.titulo{
-    color: rgb(255, 255, 255);
+.titulo {
+    width: 160px;
+    text-align: center;
+    font-size: 3em;
+    background: linear-gradient(to right, rgb(0, 221, 235), rgb(149, 24, 226));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    margin: 30px auto;
 }
 
-.titulo-explicacion{
+.ejercicio {
+    text-align: center;
+}
+
+.titulo-explicacion {
     color: #ffffff;
 }
 
-.respuesta{
-color: #ffffff;
-}
-
-.subtitulo{
+.respuesta {
     color: #ffffff;
 }
 
-.opccion{
+.subtitulo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.opccion {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 3px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.option-circle {
+    cursor: pointer;
+}
+
+.contenedor-preguntas {
+    height: 120vh;
+    background: #000000;
+    --gap: 5em;
+    --line: 1px;
+    --color: rgba(255, 255, 255, 0.2);
+
+    background-image: linear-gradient(-90deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap)),
+        linear-gradient(0deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap));
+    background-size: var(--gap) var(--gap);
     color: #ffffff;
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
-.contenedor-preguntas{
-background-color: rgb(7, 7, 7);
-color: #ffffff;
-padding: 10px;
-margin-top: 5px;
-border-radius: 10px;
-margin-bottom: 20px;
+.container-options {
+    text-align: left;
+    position: relative;
+    border-radius: 15px;
+    padding: 20px;
+    background: #000;
 }
 
-.fedback{
-    width: 193px;
-    margin-left: 42%;
-    border-radius: 10px;
+.container-options::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    padding: 2px;
+    /* Ancho del borde */
+    background: linear-gradient(to right, rgb(0, 221, 235), rgb(149, 24, 226));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.container-ejercicio {
+    position: relative;
+    border-radius: 15px;
+    padding: 20px;
+    background: #000;
+}
+
+.container-ejercicio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    /* Mismo radio del borde que el contenedor */
+    padding: 2px;
+    /* Ancho del borde */
+    background: linear-gradient(to right, rgb(0, 221, 235), rgb(149, 24, 226));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    /* Para asegurar que el pseudo-elemento no interfiera con los eventos del ratón */
+}
+
+
+.option-respuesta {
+    margin: 20px;
+}
+
+.container-buttons {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    margin: 5% auto;
+}
+
+.fedback {
+    width: 300px;
+    height: auto;
+    padding: 1px;
+    text-align: center;
+    margin: 0px auto;
+    border-radius: 15px;
+}
+
+.correcta {
+    border: 3px solid rgb(0, 255, 0);
+    background-color: rgba(0, 255, 30, 0.2);
+    backdrop-filter: blur(1px);
+    box-shadow: 0px 0px 15px rgb(0, 255, 0);
+}
+
+.incorrecta {
+    background-color: rgba(255, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+    border: 3px solid red;
+    box-shadow: 0px 0px 15px rgb(255, 0, 0);
+}
+
+/* buttons */
+
+.button {
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 18px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all .3s;
+    width: 160px;
+    height: 40px;
+}
+
+.button:active,
+.button:hover {
+    outline: 0;
+}
+
+.button span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: rgb(5, 6, 45);
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+}
+
+.button:hover span {
+    background: none;
+}
+
+.button:active {
+    transform: scale(0.9);
+}
+
+/* form ejercicios */
+
+.form-ejercicios {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.horizontal-containers {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5%;
+}
+
+/* EXPLICACION */
+
+.container-explicacion {
+    position: relative;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 2%;
+    background: #000;
+}
+
+.container-explicacion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    /* Mismo radio del borde que el contenedor */
+    padding: 2px;
+    /* Ancho del borde */
+    background: linear-gradient(to right, rgb(0, 221, 235), rgb(149, 24, 226));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    /* Para asegurar que el pseudo-elemento no interfiera con los eventos del ratón */
 }
