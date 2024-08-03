@@ -19,9 +19,12 @@ const Quiz = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/chat", {
-        prompt: `quiero que le expliques al usuario la mejor manera de resolver este problema ${currentQuestion.question} el usuario elijio esta opccion y es incorrecta ${selectedAnswer} y las opcciones eran ${currentQuestion.options} la explicacion debe ser breve`,
-      });
+      const response = await axios.post(
+        "https://back-chatbot.vercel.app/chat",
+        {
+          prompt: `quiero que le expliques al usuario la mejor manera de resolver este problema ${currentQuestion.question} el usuario elijio esta opccion y es incorrecta ${selectedAnswer} y las opcciones eran ${currentQuestion.options} la explicacion debe ser breve`,
+        }
+      );
 
       setExplanation(response.data);
       setError("");

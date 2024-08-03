@@ -13,9 +13,12 @@ function Chat() {
     setMessages([...messages, { text: inputValue, sender: "user" }]);
 
     try {
-      const response = await axios.post("http://localhost:3000/chat", {
-        prompt: inputValue,
-      });
+      const response = await axios.post(
+        "https://back-chatbot.vercel.app/chat",
+        {
+          prompt: inputValue,
+        }
+      );
       // Agrega la respuesta de la API al historial de mensajes
       setMessages([
         ...messages,
