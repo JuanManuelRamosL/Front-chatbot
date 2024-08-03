@@ -60,7 +60,7 @@ const Quiz = () => {
             </p>
           </div>
           <div className="container-options">
-            <p className="subtitulo">Select an answer:</p>
+            <p className="subtitulo">Opcciones</p>
             {currentQuestion.options.map((option) => (
               <div key={option.id} className="option-respuesta">
                 <input
