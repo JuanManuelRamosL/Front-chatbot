@@ -51,3 +51,15 @@
     align-items: center;
   }
 }
+
+.titulo {
+  width: 160px;
+  text-align: end;
+  font-size: 2em;
+  background: linear-gradient(to right, rgb(0, 221, 235), rgb(149, 24, 226));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin: 30px auto;
+}
