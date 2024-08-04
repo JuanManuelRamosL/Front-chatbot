@@ -97,7 +97,7 @@ const Quiz = () => {
                 {" "}
                 <code>-&nbsp;</code>
                 <code>npx&nbsp;</code>
-                <code className="cmd" data-cmd="Proba tus Conocimientos"></code>
+                <code className="cmd" data-cmd="Probá tus Conocimientos"></code>
               </pre>
             </div>
           </div>
@@ -115,7 +115,7 @@ const Quiz = () => {
             </p>
           </div>
           <div className="container-options">
-            <p className="subtitulo">Opcciones</p>
+            <p className="subtitulo">Opciones</p>
             {currentQuestion.options.map((option) => (
               <div key={option.id} className="option-respuesta">
                 <input

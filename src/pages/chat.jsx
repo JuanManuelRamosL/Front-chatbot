@@ -39,8 +39,8 @@ function Chat() {
   return (
     <div className="chat-container">
       <div className="chat-messages-container">
-        <h1 className="bienvenida">Bienvenido </h1>
-        <h2 className="subtitulo-bienbenida">En que puedo ayudarte?</h2>
+        <h1 className="bienvenida">Bienvenido</h1>
+        <h2 className="subtitulo-bienbenida">¿En qué puedo ayudarte?</h2>
         {messages.map((message, index) => (
           <div key={index} className={`chat-message ${message.sender}`}>
             <p>{message.text}</p>
@@ -57,7 +57,7 @@ function Chat() {
           placeholder="Escribe tu mensaje..."
         />
         <button type="submit" className="chat-submit">
-          Enviar
+          <span>Enviar</span>
         </button>
       </form>
     </div>

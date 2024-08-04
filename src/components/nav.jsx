@@ -6,6 +6,9 @@ import "./Nav.css";
 function Nav() {
   return (
     <nav className="navbar">
+      <div className="container-logo">
+        <h1 className="titulo">IAGym</h1>
+      </div>
       <ul className="nav-list">
         <li className="nav-item">
           <Link to="/" className="nav-link">
@@ -18,7 +21,6 @@ function Nav() {
           </Link>
         </li>
       </ul>
-      <h1 className="titulo">IAGym</h1>
     </nav>
   );
 }
