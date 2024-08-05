@@ -19,6 +19,7 @@
 .nav-list {
   list-style: none;
   display: flex;
+  margin-bottom: -26px;
 }
 
 .nav-item {
@@ -48,6 +49,26 @@
     /* flex-direction: column; */
     align-items: center;
   }
+
+  .nav-item {
+    margin-left: 18px;
+    margin-top: -30px;
+  }
+
+  .user-img {
+    margin-left: -60px;
+    scale: 0.8;
+    margin-bottom: -20px;
+  }
+
+  .nav-link-btn {
+    display: none;
+  }
+
+  .nav-link-btn-l {
+    margin-left: -16px;
+    margin-right: 10px;
+  }
 }
 
 .titulo {
@@ -60,4 +81,43 @@
   background-clip: text;
   color: transparent;
   margin: 30px auto;
+}
+
+.user-img {
+  border-radius: 30px;
+  width: 64px;
+  margin-top: -20px;
+}
+
+.nav-link-btn {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 6px;
+  transition: 0.3s;
+  background-color: black;
+  margin-top: -4px;
+  border: none;
+}
+
+.nav-link-btn:hover {
+  color: #007bff;
+}
+
+.nav-link-btn-l {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 6px;
+  transition: 0.3s;
+  background-color: black;
+  margin-top: -4px;
+  border: none;
+  margin-right: 15px;
+}
+
+.nav-link-btn-l:hover {
+  color: #007bff;
 }

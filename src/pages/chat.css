@@ -55,6 +55,7 @@ body {
   border: transparent;
   border-top: 1px solid;
   border-image: linear-gradient(to right, rgb(0, 221, 235), rgb(149, 24, 226)) 1;
+
 }
 
 .chat-input {
@@ -74,10 +75,10 @@ body {
   color: #fff;
 }
 
-/* From Uiverse.io by cssbuttons-io */ 
+/* From Uiverse.io by cssbuttons-io */
 .chat-submit {
   align-items: center;
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
   border: 0;
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
@@ -99,14 +100,14 @@ body {
   cursor: pointer;
   transition: all .3s;
   margin-right: 30px;
- }
- 
- .chat-submit:active,
- .chat-submit:hover {
+}
+
+.chat-submit:active,
+.chat-submit:hover {
   outline: 0;
- }
- 
- .chat-submit span {
+}
+
+.chat-submit span {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,15 +117,15 @@ body {
   width: 100%;
   height: 100%;
   transition: 300ms;
- }
- 
- .chat-submit:hover span {
+}
+
+.chat-submit:hover span {
   background: none;
- }
- 
- .chat-submit:active {
+}
+
+.chat-submit:active {
   transform: scale(0.9);
- }
+}
 
 .chat-messages-container {
   width: 100%;
@@ -133,6 +134,8 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #000;
+  height: auto;
+  margin-bottom: 100px;
 }
 
 /* @media screen and (max-width: 1253px) {
@@ -151,6 +154,7 @@ body {
   padding: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
+  /* margin-bottom: 95px; */
 }
 
 .chat-message.user {
@@ -178,7 +182,7 @@ body {
   display: block;
   white-space: nowrap;
   border-right: 4px solid #ccc;
-  width: 10ch;
+  width: 13ch;
 
   animation: typing 1s steps(12),
     blink .5s infinite step-end alternate;

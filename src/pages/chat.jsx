@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./chat.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Chat() {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([]);
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  const messagesEndRef = useRef(null);
+  console.log(user);
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -39,7 +49,10 @@ function Chat() {
   return (
     <div className="chat-container">
       <div className="chat-messages-container">
-        <h1 className="bienvenida">Bienvenido</h1>
+        <h1 className="bienvenida">
+          Bienvenido <br />
+          {user?.given_name}
+        </h1>
         <h2 className="subtitulo-bienbenida">¿En qué puedo ayudarte?</h2>
         {messages.map((message, index) => (
           <div key={index} className={`chat-message ${message.sender}`}>
@@ -47,6 +60,7 @@ function Chat() {
             {/* <small className="horario-message">18:30hs</small> */}
           </div>
         ))}
+        <div ref={messagesEndRef} />
       </div>
       <form className="chat-form" onSubmit={handleSubmit}>
         <input
