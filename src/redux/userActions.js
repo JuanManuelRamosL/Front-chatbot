@@ -26,7 +26,7 @@ export const createUser = (userData) => async (dispatch) => {
     dispatch(userRequest());
   
     try {
-      const response = await axios.post('http://localhost:3000/create-user', userData);
+      const response = await axios.post('https://back-chatbot.vercel.app/create-user', userData);
       dispatch(userSuccess(response.data));
       console.log('Usuario creado:', response.data);
     } catch (error) {
