@@ -8,6 +8,9 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const { user, isAuthenticated, isLoading } = useAuth0();
   const messagesEndRef = useRef(null);
+
+  // const [width, setWidth] = useState(0);
+
   console.log(user);
 
   useEffect(() => {
@@ -46,11 +49,18 @@ function Chat() {
     setInputValue(""); // Limpia el campo de entrada después de enviar
   };
 
+  console.log(user?.given_name?.length);
+
   return (
     <div className="chat-container">
       <div className="chat-messages-container">
         <h1 className="bienvenida">
-          Bienvenido <br />
+          Bienvenido
+        </h1>
+        <h1
+          className="bienvenida-name"
+          style={{ width: `${user?.given_name.length + 1}ch` }}
+        >
           {user?.given_name}
         </h1>
         <h2 className="subtitulo-bienbenida">¿En qué puedo ayudarte?</h2>

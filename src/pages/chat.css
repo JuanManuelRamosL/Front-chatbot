@@ -182,8 +182,7 @@ body {
   display: block;
   white-space: nowrap;
   border-right: 4px solid #ccc;
-  width: 13ch;
-
+  width: 10ch;
   animation: typing 1s steps(12),
     blink .5s infinite step-end alternate;
   overflow: hidden;
@@ -194,6 +193,40 @@ body {
     width: 0
   }
 }
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+.bienvenida-name {
+  color: transparent;
+  font-size: 40px;
+  margin-top: -3%;
+  margin-left: 14%;
+  margin-bottom: 30px;
+  background: linear-gradient(to right, rgb(0, 221, 235), rgb(143, 9, 226));
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  /* animation: fade-in 1.2s ease-in-out; */
+  /* opacity: 0; */
+  animation: slideAndFade 5s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 
 @keyframes blink {
   50% {
