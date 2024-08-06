@@ -33,7 +33,12 @@ function Nav() {
         <h1 className="titulo">CodeForge</h1>
       </div>
       <div className="container-button-toggle-menu">
-        <input type="checkbox" id="checkbox" checked={isMenuOpen} onClick={toggleMenu} />
+        <input
+          type="checkbox"
+          id="checkbox"
+          checked={isMenuOpen}
+          onClick={toggleMenu}
+        />
         <label htmlFor="checkbox" className="toggle">
           <div className="bars" id="bar1"></div>
           <div className="bars" id="bar2"></div>
@@ -49,6 +54,11 @@ function Nav() {
         <li className="nav-item">
           <Link to="/preguntas" className="nav-link" onClick={toggleMenu}>
             Ejercicios
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/rank" className="nav-link" onClick={toggleMenu}>
+            Rank
           </Link>
         </li>
         {user ? (
