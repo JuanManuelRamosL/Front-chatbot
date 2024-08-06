@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Nav.css";
@@ -10,6 +10,7 @@ function Nav() {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     if (isAuthenticated && user) {
@@ -21,19 +22,32 @@ function Nav() {
       dispatch(createUser(userData));
     }
   }, [isAuthenticated, user, dispatch]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <nav className="navbar">
       <div className="container-logo">
-        <h1 className="titulo">IAGym</h1>
+        <h1 className="titulo">CodeForge</h1>
       </div>
-      <ul className="nav-list">
+      <div className="container-button-toggle-menu">
+        <input type="checkbox" id="checkbox" checked={isMenuOpen} onClick={toggleMenu} />
+        <label htmlFor="checkbox" className="toggle">
+          <div className="bars" id="bar1"></div>
+          <div className="bars" id="bar2"></div>
+          <div className="bars" id="bar3"></div>
+        </label>
+      </div>
+      <ul className={`nav-list ${isMenuOpen ? "open" : ""}`}>
         <li className="nav-item">
-          <Link to="/" className="nav-link">
+          <Link to="/" className="nav-link" onClick={toggleMenu}>
             Chat
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/preguntas" className="nav-link">
+          <Link to="/preguntas" className="nav-link" onClick={toggleMenu}>
             Ejercicios
           </Link>
         </li>
@@ -58,7 +72,7 @@ function Nav() {
         ) : (
           <li className="nav-item">
             <button
-              className="nav-link-btn-l"
+              className="nav-link-btn"
               onClick={() => loginWithRedirect()}
             >
               Login
