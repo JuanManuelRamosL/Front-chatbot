@@ -17,6 +17,7 @@ function Nav() {
       const userData = {
         email: user.email,
         name: user.name,
+        img: user.picture,
       };
 
       dispatch(createUser(userData));
@@ -26,6 +27,8 @@ function Nav() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  console.log(user);
 
   return (
     <nav className="navbar">

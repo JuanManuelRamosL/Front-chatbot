@@ -15,19 +15,24 @@ function Rank() {
     ? [...usersListState].sort((a, b) => b.puntaje - a.puntaje)
     : [];
   return (
-    <div>
-      <h1 className="nombres">Ranking</h1>
-      <ul>
+    <div className="container-ranking">
+      <h1 className="title-ranking">Ranking</h1>
+      <ul className="">
         {sortedUsers && sortedUsers.length > 0 ? (
           sortedUsers.map((user) => (
-            <li key={user.id}>
-              <p className="nombres">
-                <strong className="nombres">Nombre:</strong> {user.name}
+            <div key={user.id} className="container-user">
+              <img src={user.img} alt="user picture" className="img-user"/>
+              <p className="name-usuario">
+                <strong className="name-usuario">Usuario:</strong> <b className="user">{user.name}</b>
               </p>
-              <p className="nombres">
-                <strong className="nombres">Puntaje:</strong> {user.puntaje}
+              <div className="container-puntaje"></div>
+              <p className="name-usuario">
+                <strong className="name-usuario">Puntaje:</strong> {user.puntaje}
               </p>
-            </li>
+              <p className="name-usuario">
+                <strong className="name-usuario">Resueltos:</strong> {user.ejercicios_resueltos}
+              </p>
+            </div>
           ))
         ) : (
           <p>No users found.</p>
