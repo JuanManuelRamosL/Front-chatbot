@@ -66,3 +66,13 @@ export const createUser = (userData) => async (dispatch) => {
       dispatch(userFailure(error.message));
     }
   };
+
+  export const sumaE = (userData) => async (dispatch) => {
+    try {
+      const response = await axios.put('https://back-chatbot.vercel.app/update-ejercicios',userData);
+      
+      console.log('Suma actualizada:', response.data);
+    } catch (error) {
+      dispatch(userFailure(error.message));
+    }
+  };

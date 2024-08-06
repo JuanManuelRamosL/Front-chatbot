@@ -4,7 +4,7 @@ import "./preguntas.css";
 import questions from "../preguntas/preguntas";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { updateUser } from "../redux/userActions";
+import { sumaE, updateUser } from "../redux/userActions";
 
 const Quiz = () => {
   const getRandomQuestion = () => {
@@ -60,7 +60,11 @@ const Quiz = () => {
         email: user.email,
         puntaje: 2,
       };
+      const email = {
+        email: user.email,
+      };
       dispatch(updateUser(userData));
+      dispatch(sumaE(email));
     }
   }, [feedback]);
 
