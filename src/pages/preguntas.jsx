@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./preguntas.css";
 import questions from "../preguntas/preguntas";
+import { useDispatch, useSelector } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import { updateUser } from "../redux/userActions";
 
 const Quiz = () => {
   const getRandomQuestion = () => {
@@ -14,6 +17,8 @@ const Quiz = () => {
   const [explanation, setExplanation] = useState("");
   const [error, setError] = useState("");
   const [feedback, setFeedback] = useState(""); // Nuevo estado para la retroalimentación
+  const dispatch = useDispatch();
+  const { user, isAuthenticated, isLoading } = useAuth0();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -48,6 +53,16 @@ const Quiz = () => {
     setError("");
     setFeedback(""); // Resetea el feedback
   };
+
+  useEffect(() => {
+    if (feedback == "¡Respuesta correcta!") {
+      const userData = {
+        email: user.email,
+        puntaje: 2,
+      };
+      dispatch(updateUser(userData));
+    }
+  }, [feedback]);
 
   return (
     <div className="contenedor-preguntas">

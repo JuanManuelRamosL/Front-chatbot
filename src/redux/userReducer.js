@@ -1,10 +1,12 @@
 // src/redux/userReducer.js
-import { USER_REQUEST, USER_SUCCESS, USER_FAILURE } from './userActions';
+import { USER_REQUEST, USER_SUCCESS, USER_FAILURE,USERS ,USERS_LIST} from './userActions';
 
 const initialState = {
   loading: false,
   user: null,
-  error: null
+  error: null,
+  users:null,
+  users_list:null
 };
 
 const userReducer = (state = initialState, action) => {
@@ -26,6 +28,18 @@ const userReducer = (state = initialState, action) => {
         user: null,
         error: action.payload
       };
+      case USERS:
+        return {
+          loading: false,
+          user: null,
+          error: action.payload
+        };
+        case USERS_LIST:
+          return {
+            loading: false,
+            users_list: action.payload,
+            error: null
+          };
     default:
       return state;
   }

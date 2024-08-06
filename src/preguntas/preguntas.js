@@ -107,6 +107,16 @@ const questions = [
     ],
     correctAnswer: "Start\nTask completed\nEnd", // Respuesta correcta
   },
+  {
+    question: `¿Qué imprime el siguiente código JavaScript?\n\nconst users = [\n  { name: 'Alice', age: 30 },\n  { name: 'Bob', age: 25 },\n  { name: 'Charlie', age: 35 }\n];\n\nusers.sort((a, b) => a.age - b.age);\n\nconsole.log(users.map(user => user.name).join(', '));`,
+    options: [
+      { id: "option1", text: "Alice, Bob, Charlie" },
+      { id: "option2", text: "Charlie, Alice, Bob" },
+      { id: "option3", text: "Bob, Alice, Charlie" },
+      { id: "option4", text: "Charlie, Bob, Alice" },
+    ],
+    correctAnswer: "Bob, Alice, Charlie", // Respuesta correcta
+  }
 ];
 
 export default questions;
