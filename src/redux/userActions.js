@@ -43,7 +43,7 @@ export const createUser = (userData) => async (dispatch) => {
       dispatch(userSuccess(response.data));
       console.log('Usuario creado:', response.data);
     } catch (error) {
-      dispatch(userFailure(error.message));
+ 
     }
   };
 

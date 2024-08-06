@@ -11,10 +11,12 @@ function Rank() {
     dispatch(getUsers());
     console.log(usersListState);
   }, []);
-  const sortedUsers = [...usersListState].sort((a, b) => b.puntaje - a.puntaje);
+  const sortedUsers = Array.isArray(usersListState)
+    ? [...usersListState].sort((a, b) => b.puntaje - a.puntaje)
+    : [];
   return (
     <div>
-      <h1>Ranking</h1>
+      <h1 className="nombres">Ranking</h1>
       <ul>
         {sortedUsers && sortedUsers.length > 0 ? (
           sortedUsers.map((user) => (

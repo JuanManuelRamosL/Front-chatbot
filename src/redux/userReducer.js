@@ -6,7 +6,7 @@ const initialState = {
   user: null,
   error: null,
   users:null,
-  users_list:null
+  users_list:[]
 };
 
 const userReducer = (state = initialState, action) => {
