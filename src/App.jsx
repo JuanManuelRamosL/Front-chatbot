@@ -13,8 +13,8 @@ function App() {
 
       <Routes>
         {/*  <Route path="/" element={<Chat />} /> */}
-        <Route path="/" element={<Quiz />} />
-        <Route path="/rank" element={<Rank />} />
+        <Route path="/preguntas" element={<Quiz />} />
+        <Route path="/" element={<Rank />} />
       </Routes>
     </Router>
   );
