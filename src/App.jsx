@@ -12,8 +12,8 @@ function App() {
       <Nav></Nav>
 
       <Routes>
-        <Route path="/" element={<Chat />} />
-        <Route path="/preguntas" element={<Quiz />} />
+        {/*  <Route path="/" element={<Chat />} /> */}
+        <Route path="/" element={<Quiz />} />
         <Route path="/rank" element={<Rank />} />
       </Routes>
     </Router>
