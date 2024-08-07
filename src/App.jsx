@@ -5,6 +5,7 @@ import Quiz from "./pages/preguntas";
 import "./App.css";
 import Nav from "./components/nav";
 import Rank from "./pages/ranking";
+import User from "./pages/usuario";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Chat />} />
         <Route path="/preguntas" element={<Quiz />} />
         <Route path="/rank" element={<Rank />} />
+        <Route path="/user" element={<User />} />
       </Routes>
     </Router>
   );
