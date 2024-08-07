@@ -80,7 +80,11 @@ function Nav() {
             </li>
             <li className="nav-item">
               <div className="user-info">
-                <img src={user.picture} alt={user.name} className="user-img" />
+                <img
+                  src={user?.picture}
+                  alt={user?.name}
+                  className="user-img"
+                />
               </div>
             </li>
           </>
