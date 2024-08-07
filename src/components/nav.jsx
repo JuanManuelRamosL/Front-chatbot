@@ -17,7 +17,9 @@ function Nav() {
       const userData = {
         email: user.email,
         name: user.name,
-        img: user.picture,
+        img:
+          user.picture ||
+          "https://img.freepik.com/vector-premium/icono-circulo-usuario-anonimo-ilustracion-vector-estilo-plano-sombra_520826-1931.jpg",
       };
 
       dispatch(createUser(userData));

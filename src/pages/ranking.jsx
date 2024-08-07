@@ -12,7 +12,7 @@ function Rank() {
     console.log(usersListState);
   }, []);
   const sortedUsers = Array.isArray(usersListState)
-    ? [...usersListState].sort((a, b) => b.puntaje - a.puntaje)
+    ? [...usersListState].sort((a, b) => b.puntaje - a.puntaje).slice(0, 5)
     : [];
   return (
     <div className="container-ranking">
@@ -21,16 +21,19 @@ function Rank() {
         {sortedUsers && sortedUsers.length > 0 ? (
           sortedUsers.map((user) => (
             <div key={user.id} className="container-user">
-              <img src={user.img} alt="user picture" className="img-user"/>
+              <img src={user.img} alt="user picture" className="img-user" />
               <p className="name-usuario">
-                <strong className="name-usuario">Usuario:</strong> <b className="user">{user.name}</b>
+                <strong className="name-usuario">Usuario:</strong>{" "}
+                <b className="user">{user.name}</b>
               </p>
               <div className="container-puntaje"></div>
               <p className="name-usuario">
-                <strong className="name-usuario">Puntaje:</strong> {user.puntaje}
+                <strong className="name-usuario">Puntaje:</strong>{" "}
+                {user.puntaje}
               </p>
               <p className="name-usuario">
-                <strong className="name-usuario">Resueltos:</strong> {user.ejercicios_resueltos}
+                <strong className="name-usuario">Resueltos:</strong>{" "}
+                {user.ejercicios_resueltos}
               </p>
             </div>
           ))

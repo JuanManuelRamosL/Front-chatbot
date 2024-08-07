@@ -21,7 +21,10 @@ function Chat() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    if (!inputValue.trim()) {
+      alert("Realiza una pregunta");
+      return; // No enviar peticiones vacías
+    }
     // Agrega la pregunta del usuario al historial de mensajes
     setMessages([...messages, { text: inputValue, sender: "user" }]);
 
