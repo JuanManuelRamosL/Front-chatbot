@@ -17,7 +17,7 @@ function Rank() {
   return (
     <div className="container-ranking">
       <h1 className="title-ranking">Ranking</h1>
-      <ul className="">
+      <ul className="ul">
         {sortedUsers && sortedUsers.length > 0 ? (
           sortedUsers.map((user) => (
             <div key={user.id} className="container-user">
