@@ -40,7 +40,7 @@
   border: 1px solid;
   justify-content: center;
   box-sizing: border-box;
-
+  padding: 11px;
   border-bottom: 2px solid;
   border-image: linear-gradient(to right, rgb(0, 221, 235), rgb(149, 24, 226)) 1;
 }
