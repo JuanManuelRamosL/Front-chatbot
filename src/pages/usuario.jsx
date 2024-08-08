@@ -13,6 +13,10 @@ function User() {
     dispatch(getUsers());
   }, [dispatch]);
 
+  const authenticatedUserData = usersListState?.find(
+    (userItem) => userItem.email === user?.email
+  );
+
   return (
     <div className="profile-container">
       {isLoading ? (
@@ -29,28 +33,23 @@ function User() {
             <div className="profile-details">
               <p className="profile-name">Name: {user.name}</p>
               <p className="profile-email">Email: {user.email}</p>
+              {authenticatedUserData && (
+                <>
+                  <p className="user-item-score">
+                    Puntaje: {authenticatedUserData.puntaje}
+                  </p>
+                  <p className="user-item-resolved">
+                    Ejercicios resueltos:{" "}
+                    {authenticatedUserData.ejercicios_resueltos}
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
       ) : (
         <p>User not authenticated</p>
       )}
-
-      <ul className="users-list">
-        {usersListState && usersListState.length > 0 ? (
-          usersListState.map((userItem) => (
-            <li key={userItem.id} className="user-item">
-              <p className="user-item-name">Name: {userItem.name}</p>
-              <p className="user-item-score">Score: {userItem.puntaje}</p>
-              <p className="user-item-resolved">
-                Resolved Exercises: {userItem.ejercicios_resueltos}
-              </p>
-            </li>
-          ))
-        ) : (
-          <p>No users found.</p>
-        )}
-      </ul>
     </div>
   );
 }
