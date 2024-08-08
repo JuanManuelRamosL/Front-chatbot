@@ -61,9 +61,9 @@ function Chat() {
           <h2 className="bienvenida">Bienvenido</h2>
           <h2
             className="bienvenida-name"
-            style={{ width: `${user?.given_name.length + 1}ch` }}
+            style={{ width: `${user?.given_name?.length + 1}ch` }}
           >
-            {user?.given_name}
+            {user?.given_name || user?.nickname}
           </h2>
           <h2 className="subtitulo-bienbenida">¿En qué puedo ayudarte?</h2>
         </div>
