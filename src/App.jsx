@@ -6,6 +6,7 @@ import "./App.css";
 import Nav from "./components/nav";
 import Rank from "./pages/ranking";
 import User from "./pages/usuario";
+import Login from "./pages/loguin2";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/preguntas" element={<Quiz />} />
         <Route path="/rank" element={<Rank />} />
         <Route path="/user" element={<User />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

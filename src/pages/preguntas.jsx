@@ -55,7 +55,7 @@ const Quiz = () => {
   };
 
   useEffect(() => {
-    if (feedback == "¡Respuesta correcta!") {
+    if (feedback == "¡Respuesta correcta!" && user) {
       const userData = {
         email: user.email,
         puntaje: 2,

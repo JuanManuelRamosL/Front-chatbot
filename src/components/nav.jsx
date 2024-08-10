@@ -66,6 +66,11 @@ function Nav() {
             Rank
           </Link>
         </li>
+        {/*   <li className="nav-item">
+          <Link to="/login" className="nav-link">
+            login2
+          </Link>
+        </li> */}
         {user ? (
           <>
             <li className="nav-item">
