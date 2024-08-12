@@ -1,26 +1,116 @@
+.container-general-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #000000;
+    flex-direction: column;
+    height: 89vh;
+    background-color: #000;
 }
+
+.title-registrer {
+    text-align: center;
+    color: transparent;
+    display: block;
+    white-space: nowrap;
+    border-right: 4px solid #ccc;
+    width: 10ch;
+    animation: typing 1s steps(12),
+      blink .5s infinite step-end alternate;
+    overflow: hidden;
+    background: linear-gradient(to right, rgb(0, 221, 235), rgb(143, 9, 226));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@keyframes typing {
+    from {
+      width: 0
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
 
 .welcome-container,
 .form-container {
-    background-color: white;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --border-color: linear-gradient(-45deg, rgb(0, 221, 235), rgb(149, 24, 226));
+    --border-width: 2px;
+    --curve-size: 15px;
+    --blur: 30px;
+    --bg: #000;
+    color: #fff;
+    position: relative;
+    isolation: isolate;
+    padding: 28px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 300px;
-    padding: 28px;
+    border: 0;
+}
+
+.form-container::after,
+.form-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.form-container::before {
+    background: var(--border-color);
+    background-size: 300% 300%;
+    animation: move-bg7234 5s ease infinite;
+    z-index: -2;
+}
+
+@keyframes move-bg7234 {
+    0% {
+        background-position: 31% 0%;
+    }
+
+    50% {
+        background-position: 70% 100%;
+    }
+
+    100% {
+        background-position: 31% 0%;
+    }
+}
+
+.form-container::after {
+    background: var(--bg);
+    z-index: -1;
+    clip-path: polygon(var(--border-width) calc(var(--curve-size) + var(--border-width) * 0.5),
+            calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+            calc(100% - var(--border-width)) var(--border-width),
+            calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+            calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+            var(--border-width) calc(100% - var(--border-width)));
+    transition: clip-path 500ms;
+}
+
+.container-buttons-options {
+    width: 100%;
 }
 
 .welcome-text {
     font-size: 1.5em;
     margin-bottom: 20px;
-    color: #333;
+    color: #fff;
 }
 
 .user-avatar {
@@ -33,16 +123,26 @@
 .user-email,
 .user-provider {
     margin: 10px 0;
-    color: #555;
+    color: #fff;
 }
 
 .input-field {
     width: 100%;
+    font-size: 18px;
+    font-weight: bold;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     font-size: 1em;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(to right, rgb(0, 221, 235), rgb(149, 24, 226)) 1;
+    background-color: #000;
+    color: #fff;
+}
+
+.input-field::placeholder {
+    color: #fff;
 }
 
 .btn {
@@ -56,18 +156,105 @@
 }
 
 .btn-login {
-    background-color: #4caf50;
-    color: white;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 18px;
+    justify-content: center;
+    max-width: 100%;
+    min-width: 100px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.btn-login:active,
+.btn-login:hover {
+    outline: 0;
+}
+
+.btn-login span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: rgb(5, 6, 45);
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+}
+
+.btn-login:hover span {
+    background: none;
+}
+
+.btn-login:active {
+    transform: scale(0.9);
 }
 
 .btn-register {
-    background-color: #2196f3;
-    color: white;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 18px;
+    justify-content: center;
+    max-width: 100%;
+    min-width: 100px;
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all .3s;
 }
 
-.btn-google {
-    background-color: #db4437;
-    color: white;
+.btn-register:active,
+.btn-register:hover {
+    outline: 0;
+}
+
+.btn-register span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: rgb(5, 6, 45);
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+}
+
+.btn-register:hover span {
+    background: none;
+}
+
+.btn-register:active {
+    transform: scale(0.9);
 }
 
 .btn-logout {
@@ -76,18 +263,31 @@
 }
 
 .btn-google {
+    width: 100%;
     display: flex;
     align-items: center;
-    background-color: #4285f4;
-    color: white;
+    gap: 20px;
+    background-color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-.google-logo {
-    width: 50px;
-    height: 35px;
-    margin-right: 10px;
+.svg-google {
+    transition: 0.3s;
+}
+
+.btn-google:hover {
+    border-radius: 13px;
+}
+
+.btn-google:hover .svg-google {
+    transform: scale(1.2);
+}
+
+.text-button-google {
+    font-size: 16px;
+    font-weight: 600;
 }

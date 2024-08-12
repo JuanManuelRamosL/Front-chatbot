@@ -57,6 +57,8 @@ function Nav() {
     }
   };
 
+  console.log(userState);
+  
   return (
     <nav className="navbar">
       <div className="container-logo">

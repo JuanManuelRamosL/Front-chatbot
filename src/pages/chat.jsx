@@ -2,16 +2,41 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./chat.css";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../credenciales"; // Asegúrate de que este import coincida con la ubicación real del archivo
 
 function Chat() {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([]);
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user: auth0User, isAuthenticated: isAuth0Authenticated, isLoading } = useAuth0();
+  const [firebaseUser, setFirebaseUser] = useState(null);
   const messagesEndRef = useRef(null);
+  const usersListState = useSelector((state) => state.user.users_list);
 
-  // const [width, setWidth] = useState(0);
+  useEffect(() => {
+    // Escuchar cambios en el estado de autenticación de Firebase
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setFirebaseUser(user);
+    });
 
-  console.log(user);
+    return () => unsubscribe(); // Limpia el observador cuando el componente se desmonta
+  }, []);
+
+  // Priorizar mostrar datos de Firebase si el usuario está autenticado con Firebase, de lo contrario, usar Auth0
+  const currentUser = firebaseUser || auth0User;
+  const isAuthenticated = !!currentUser;
+
+  const authenticatedUserData = usersListState?.find(
+    (userItem) => userItem.email === currentUser?.email
+  );
+
+  // Aquí puedes hacer un console.log de los datos obtenidos
+  useEffect(() => {
+    if (authenticatedUserData) {
+      console.log(authenticatedUserData);
+    }
+  }, [authenticatedUserData]);
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -52,8 +77,6 @@ function Chat() {
     setInputValue(""); // Limpia el campo de entrada después de enviar
   };
 
-  console.log(user?.given_name?.length);
-
   return (
     <div className="chat-container">
       <div className="chat-messages-container">
@@ -61,16 +84,15 @@ function Chat() {
           <h2 className="bienvenida">Bienvenido</h2>
           <h2
             className="bienvenida-name"
-            style={{ width: `${user?.given_name?.length + 1}ch` }}
+            style={{ width: `${currentUser?.given_name?.length + 1}ch` }}
           >
-            {user?.given_name || user?.nickname}
+            {currentUser?.given_name || currentUser?.nickname|| authenticatedUserData.name}
           </h2>
           <h2 className="subtitulo-bienbenida">¿En qué puedo ayudarte?</h2>
         </div>
         {messages.map((message, index) => (
           <div key={index} className={`chat-message ${message.sender}`}>
             <p>{message.text}</p>
-            {/* <small className="horario-message">18:30hs</small> */}
           </div>
         ))}
         <div ref={messagesEndRef} />
