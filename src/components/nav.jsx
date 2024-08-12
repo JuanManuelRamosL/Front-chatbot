@@ -1,36 +1,61 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import "./Nav.css";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../redux/userActions";
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {
+  register,
+  login,
+  loginWithGoogle,
+  logout,
+  subscribeToAuthChanges,
+} from "../auth/servises";
 function Nav() {
-  const { loginWithRedirect, logout } = useAuth0();
-  const { user, isAuthenticated, isLoading } = useAuth0();
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user2, setUser2] = useState(null);
 
   useEffect(() => {
-    if (isAuthenticated && user) {
-      const userData = {
-        email: user.email,
-        name: user.name,
-        img:
-          user.picture ||
-          "https://img.freepik.com/vector-premium/icono-circulo-usuario-anonimo-ilustracion-vector-estilo-plano-sombra_520826-1931.jpg",
-      };
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser2(user);
+        const userData = {
+          email: user.email,
+          name: user.displayName,
+          img:
+            user.photoURL ||
+            "https://img.freepik.com/vector-premium/icono-circulo-usuario-anonimo-ilustracion-vector-estilo-plano-sombra_520826-1931.jpg",
+        };
+        dispatch(createUser(userData));
+      } else {
+        setUser2(null);
+      }
+    });
 
-      dispatch(createUser(userData));
-    }
-  }, [isAuthenticated, user, dispatch]);
+    return () => unsubscribe();
+  }, [dispatch]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  console.log(user);
+  /*  const handleLogout = async () => {
+    const auth = getAuth();
+    await auth.signOut();
+    setUser2(null);
+    console.log("User logged out successfully");
+  }; */
+  const handleLogout = async () => {
+    try {
+      await logout();
+      console.log("User logged out successfully");
+    } catch (error) {
+      console.error("Error logging out", error);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -66,29 +91,26 @@ function Nav() {
             Rank
           </Link>
         </li>
-        {/*   <li className="nav-item">
-          <Link to="/login" className="nav-link">
-            login2
-          </Link>
-        </li> */}
-        {user ? (
+        {user2 ? (
           <>
             <li className="nav-item">
-              <button
-                className="nav-link-btn"
-                onClick={() =>
-                  logout({ logoutParams: { returnTo: window.location.origin } })
-                }
-              >
+              {/*     <button className="nav-link-btn" onClick={handleLogout}>
                 Log Out
+              </button> */}
+              <button className="nav-link-btn" onClick={handleLogout}>
+                logout
               </button>
             </li>
             <li className="nav-item">
               <div className="user-info">
                 <Link to="/user">
                   <img
-                    src={user?.picture}
-                    alt={user?.name}
+                    src={
+                      user2.photoURL ||
+                      userState.user?.img ||
+                      "https://img.freepik.com/vector-premium/icono-circulo-usuario-anonimo-ilustracion-vector-estilo-plano-sombra_520826-1931.jpg"
+                    }
+                    alt={user2.displayName || "user"}
                     className="user-img"
                   />
                 </Link>
@@ -97,12 +119,12 @@ function Nav() {
           </>
         ) : (
           <li className="nav-item">
-            <button
-              className="nav-link-btn"
-              onClick={() => loginWithRedirect()}
-            >
+            {/*    <button className="nav-link-btn" onClick={toggleMenu}>
               Login
-            </button>
+            </button> */}
+            <Link to="/login" className="nav-link">
+              <button className="nav-link-btn">Login</button>
+            </Link>
           </li>
         )}
       </ul>

@@ -3,8 +3,8 @@ import axios from "axios";
 import "./preguntas.css";
 import questions from "../preguntas/preguntas";
 import { useDispatch, useSelector } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
 import { sumaE, updateUser } from "../redux/userActions";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Quiz = () => {
   const getRandomQuestion = () => {
@@ -16,9 +16,22 @@ const Quiz = () => {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [explanation, setExplanation] = useState("");
   const [error, setError] = useState("");
-  const [feedback, setFeedback] = useState(""); // Nuevo estado para la retroalimentación
+  const [feedback, setFeedback] = useState(""); // Estado para la retroalimentación
+  const [user, setUser] = useState(null);
   const dispatch = useDispatch();
-  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -55,7 +68,7 @@ const Quiz = () => {
   };
 
   useEffect(() => {
-    if (feedback == "¡Respuesta correcta!" && user) {
+    if (feedback === "¡Respuesta correcta!" && user) {
       const userData = {
         email: user.email,
         puntaje: 2,
@@ -66,8 +79,7 @@ const Quiz = () => {
       dispatch(updateUser(userData));
       dispatch(sumaE(email));
     }
-  }, [feedback]);
-
+  }, [feedback, user, dispatch]);
   return (
     <div className="contenedor-preguntas">
       <div className="card">
