@@ -9,7 +9,11 @@ import { auth } from "../credenciales"; // Asegúrate de que este import coincid
 function Chat() {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([]);
-  const { user: auth0User, isAuthenticated: isAuth0Authenticated, isLoading } = useAuth0();
+  const {
+    user: auth0User,
+    isAuthenticated: isAuth0Authenticated,
+    isLoading,
+  } = useAuth0();
   const [firebaseUser, setFirebaseUser] = useState(null);
   const messagesEndRef = useRef(null);
   const usersListState = useSelector((state) => state.user.users_list);
@@ -30,13 +34,6 @@ function Chat() {
   const authenticatedUserData = usersListState?.find(
     (userItem) => userItem.email === currentUser?.email
   );
-
-  // Aquí puedes hacer un console.log de los datos obtenidos
-  useEffect(() => {
-    if (authenticatedUserData) {
-      console.log(authenticatedUserData);
-    }
-  }, [authenticatedUserData]);
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -86,7 +83,9 @@ function Chat() {
             className="bienvenida-name"
             style={{ width: `${currentUser?.given_name?.length + 1}ch` }}
           >
-            {currentUser?.given_name || currentUser?.nickname|| authenticatedUserData.name}
+            {currentUser?.given_name ||
+              currentUser?.nickname ||
+              authenticatedUserData?.name}
           </h2>
           <h2 className="subtitulo-bienbenida">¿En qué puedo ayudarte?</h2>
         </div>

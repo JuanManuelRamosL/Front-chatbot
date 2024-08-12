@@ -93,9 +93,9 @@ const Quiz = () => {
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  stroke-linejoin="round"
-                  stroke-linecap="round"
-                  stroke-width="2"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
                   stroke="currentColor"
                   fill="none"
                 >
@@ -104,16 +104,16 @@ const Quiz = () => {
                 Terminal
               </p>
 
-              <button className="copy_toggle" tabindex="-1" type="button">
+              <button className="copy_toggle" tabIndex="-1" type="button">
                 <svg
                   width="16px"
                   height="16px"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
-                  stroke-linejoin="round"
-                  stroke-linecap="round"
-                  stroke-width="2"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
                   stroke="currentColor"
                   fill="none"
                 >

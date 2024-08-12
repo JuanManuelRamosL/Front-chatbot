@@ -38,6 +38,7 @@
 
     .option-circle {
         cursor: pointer;
+        scale: 1.5;
     }
 
     .contenedor-preguntas {
