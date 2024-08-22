@@ -34,7 +34,7 @@ function User() {
   const authenticatedUserData = usersListState?.find(
     (userItem) => userItem.email === currentUser?.email
   );
-  console.log(currentUser);
+
   return (
     <div className="profile-container">
       {isLoading ? (

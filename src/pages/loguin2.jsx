@@ -35,8 +35,6 @@ function Login() {
       const userCredential = await register(email, password);
       const user = userCredential.user;
 
-      console.log("User registered successfully", user);
-
       const userData = {
         email: user.email,
         name: name || user.displayName || "", // Usa el nombre proporcionado o el displayName si no hay uno
