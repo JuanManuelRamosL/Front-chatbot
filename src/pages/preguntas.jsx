@@ -98,6 +98,7 @@ const Quiz = () => {
     <div className="contenedor-preguntas">
       {/* Selector de lenguaje */}
       <div className="language-selector">
+        <h1>Elige un lenguaje:</h1>
         <button
           className={`butonI ${language === "javascript" ? "active" : ""}`}
           onClick={() => setLanguage("javascript")}

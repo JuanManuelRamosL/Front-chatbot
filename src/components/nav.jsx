@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./Nav.css";
+import Logo from "./logo";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../redux/userActions";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -61,6 +62,7 @@ function Nav() {
     <nav className="navbar">
       <div className="container-logo">
         <h1 className="titulo">CodeForge</h1>
+        <Logo></Logo>
       </div>
       <div className="container-button-toggle-menu">
         <input
