@@ -47,7 +47,7 @@ function User() {
               src={
                 currentUser?.photoURL ||
                 currentUser?.picture ||
-                authenticatedUserData.img
+                authenticatedUserData?.img
               }
               alt="User Avatar"
               className="profile-avatar"
@@ -57,17 +57,17 @@ function User() {
                 Name:{" "}
                 {currentUser?.displayName ||
                   currentUser?.name ||
-                  authenticatedUserData.name}
+                  authenticatedUserData?.name}
               </p>
               <p className="profile-email">Email: {currentUser?.email}</p>
               {authenticatedUserData && (
                 <>
                   <p className="user-item-score">
-                    Puntaje: {authenticatedUserData.puntaje}
+                    Puntaje: {authenticatedUserData?.puntaje}
                   </p>
                   <p className="user-item-resolved">
                     Ejercicios resueltos:{" "}
-                    {authenticatedUserData.ejercicios_resueltos}
+                    {authenticatedUserData?.ejercicios_resueltos}
                   </p>
                 </>
               )}
