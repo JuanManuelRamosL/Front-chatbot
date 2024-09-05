@@ -4,7 +4,6 @@ import "./code.css";
 import problemasDeProgramacion from "../preguntas/preguntasCodigo"; // Importa el array de preguntas
 
 function Codeo() {
-  // Estado para almacenar la pregunta actual
   const [currentQuestion, setCurrentQuestion] = useState(
     problemasDeProgramacion[
       Math.floor(Math.random() * problemasDeProgramacion.length)
@@ -16,30 +15,42 @@ function Codeo() {
 
   // Función para cambiar la pregunta actual por una aleatoria
   const changeQuestion = () => {
-    console.log("funcion cambiar preg");
     const randomQuestion =
       problemasDeProgramacion[
         Math.floor(Math.random() * problemasDeProgramacion.length)
       ];
     setCurrentQuestion(randomQuestion);
+    setExplanation(""); // Limpiar la explicación anterior al cambiar de pregunta
+    setError("");
+    setSelectedAnswer(""); // Limpiar la respuesta anterior
   };
 
+  // Función para manejar el envío del formulario
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      const response = await axios.post(
-        "https://back-chatbot.vercel.app/chat",
-        {
-          prompt: `Quiero que des un feedback para un ejercicio de programación. Este es el problema: "${currentQuestion}". El usuario dio esta respuesta: "${selectedAnswer}". Responde si lo resolvió bien o mal. Si lo resolvió bien, solo responde un "bien" o una felicitación corta, y proporciona sugerencias si lo resolvió mal.`,
-        }
-      );
+    // Usar la función de test del problema actual
+    const isCorrect = currentQuestion.test(selectedAnswer);
 
-      setExplanation(response.data);
+    if (isCorrect) {
+      setExplanation("¡Bien hecho! Tu respuesta es correcta.");
       setError("");
-    } catch (err) {
-      console.error(err);
-      setError("Error generating explanation");
+    } else {
+      // Si la respuesta es incorrecta, llamar a la función de IA en el servidor
+      try {
+        const response = await axios.post(
+          "https://back-chatbot.vercel.app/chat",
+          {
+            prompt: `Quiero que des un feedback para un ejercicio de programación. Este es el problema: "${currentQuestion.problema}". El usuario dio esta respuesta: "${selectedAnswer}". Responde si lo resolvió bien o mal. Si lo resolvió bien, solo responde un "bien" o una felicitación corta, y proporciona sugerencias si lo resolvió mal.`,
+          }
+        );
+
+        setExplanation(response.data);
+        setError("");
+      } catch (err) {
+        console.error(err);
+        setError("Error generating explanation");
+      }
     }
   };
 

@@ -1,55 +1,322 @@
+/* const problemasDeProgramacion = [
+  {
+    problema: "Encuentra el número más bajo en un array de números.",
+    dificultad: "Fácil",
+    ej: `minimo([3, 1, 7, 2, 5]) ➞ 1`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return funcionUsuario([3, 1, 7, 2, 5]) === 1;
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Escribe una función que invierta una cadena de texto.",
+    dificultad: "Fácil",
+    ej: `invertir("hola") ➞ "aloh"`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return funcionUsuario("hola") === "aloh";
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Devuelve 'true' si una palabra es un palíndromo.",
+    dificultad: "Intermedio",
+    ej: `esPalindromo("radar") ➞ true`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return funcionUsuario("radar") === true;
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Encuentra el número que más se repite en un array.",
+    dificultad: "Intermedio",
+    ej: `masFrecuente([1, 2, 3, 2, 4, 2, 5]) ➞ 2`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return funcionUsuario([1, 2, 3, 2, 4, 2, 5]) === 2;
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Escribe una función que calcule la suma de los primeros 'n' números naturales.",
+    dificultad: "Fácil",
+    ej: `sumaNaturales(5) ➞ 15`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return funcionUsuario(5) === 15;
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Encuentra el subarray contiguo de mayor suma en un array de enteros.",
+    dificultad: "Difícil",
+    ej: `maxSumaSubarray([-2,1,-3,4,-1,2,1,-5,4]) ➞ 6`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return funcionUsuario([-2, 1, -3, 4, -1, 2, 1, -5, 4]) === 6;
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Convierte un número romano a un número entero.",
+    dificultad: "Intermedio",
+    ej: `romanoAEntero("IX") ➞ 9`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return funcionUsuario("IX") === 9;
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Dada una matriz de enteros, devuelve la transpuesta de la matriz.",
+    dificultad: "Intermedio",
+    ej: `transpuesta([[1,2,3],[4,5,6]]) ➞ [[1,4],[2,5],[3,6]]`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return JSON.stringify(funcionUsuario([[1, 2, 3], [4, 5, 6]])) === JSON.stringify([[1, 4], [2, 5], [3, 6]]);
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Escribe una función que devuelva los números primos hasta un número dado.",
+    dificultad: "Intermedio",
+    ej: `numerosPrimos(10) ➞ [2, 3, 5, 7]`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return JSON.stringify(funcionUsuario(10)) === JSON.stringify([2, 3, 5, 7]);
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Calcula el factorial de un número dado.",
+    dificultad: "Fácil",
+    ej: `factorial(5) ➞ 120`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return funcionUsuario(5) === 120;
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Devuelve el elemento más común en un array de strings.",
+    dificultad: "Intermedio",
+    ej: `masComun(["a", "b", "a", "c", "a", "b"]) ➞ "a"`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return funcionUsuario(["a", "b", "a", "c", "a", "b"]) === "a";
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Escribe una función que devuelva el enésimo número de Fibonacci.",
+    dificultad: "Intermedio",
+    ej: `fibonacci(6) ➞ 8`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = eval(`(${respuestaUsuario})`);
+        return funcionUsuario(6) === 8;
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+];
+
+export default problemasDeProgramacion;
+ */
+
 const problemasDeProgramacion = [
-    {
-      problema: "Encuentra el número más bajo en un array de números.",
-      dificultad: "Fácil",
-      ej: `minimo([3, 1, 7, 2, 5]) ➞ 1`,
+  {
+    problema: "Encuentra el número más bajo en un array de números.",
+    dificultad: "Fácil",
+    ej: `minimo([3, 1, 7, 2, 5]) ➞ 1`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario([3, 1, 7, 2, 5]) === 1;
+      } catch (error) {
+        return false;
+      }
     },
-    {
-      problema: "Escribe una función que invierta una cadena de texto.",
-      dificultad: "Fácil",
-      ej: `invertir("hola") ➞ "aloh"`,
+  },
+  {
+    problema: "Escribe una función que invierta una cadena de texto.",
+    dificultad: "Fácil",
+    ej: `invertir("hola") ➞ "aloh"`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario("hola") === "aloh";
+      } catch (error) {
+        return false;
+      }
     },
-    {
-      problema: "Elimina todos los elementos duplicados de un array.",
-      dificultad: "Media",
-      ej: `eliminarDuplicados([1, 2, 2, 3, 4, 4, 5]) ➞ [1, 2, 3, 4, 5]`,
+  },
+  {
+    problema: "Devuelve 'true' si una palabra es un palíndromo.",
+    dificultad: "Intermedio",
+    ej: `esPalindromo("radar") ➞ true`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario("radar") === true;
+      } catch (error) {
+        return false;
+      }
     },
-    {
-      problema: "Escribe una función que determine si una cadena es un palíndromo.",
-      dificultad: "Media",
-      ej: `esPalindromo("radar") ➞ true`,
+  },
+  {
+    problema: "Encuentra el número que más se repite en un array.",
+    dificultad: "Intermedio",
+    ej: `masFrecuente([1, 2, 3, 2, 4, 2, 5]) ➞ 2`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario([1, 2, 3, 2, 4, 2, 5]) === 2;
+      } catch (error) {
+        return false;
+      }
     },
-    {
-      problema: "Crea una función que devuelva el factorial de un número.",
-      dificultad: "Media",
-      ej: `factorial(5) ➞ 120`,
+  },
+  {
+    problema: "Escribe una función que calcule la suma de los primeros 'n' números naturales.",
+    dificultad: "Fácil",
+    ej: `sumaNaturales(5) ➞ 15`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario(5) === 15;
+      } catch (error) {
+        return false;
+      }
     },
-    {
-      problema: "Implementa una función que ordene un array de números utilizando el algoritmo de burbuja.",
-      dificultad: "Media",
-      ej: `burbuja([5, 3, 8, 4, 2]) ➞ [2, 3, 4, 5, 8]`,
+  },
+  {
+    problema: "Encuentra el subarray contiguo de mayor suma en un array de enteros.",
+    dificultad: "Difícil",
+    ej: `maxSumaSubarray([-2,1,-3,4,-1,2,1,-5,4]) ➞ 6`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario([-2, 1, -3, 4, -1, 2, 1, -5, 4]) === 6;
+      } catch (error) {
+        return false;
+      }
     },
-    {
-      problema: "Encuentra el subarray contiguo de mayor suma en un array de enteros.",
-      dificultad: "Difícil",
-      ej: `maxSumaSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4]) ➞ 6`,
+  },
+  {
+    problema: "Convierte un número romano a un número entero.",
+    dificultad: "Intermedio",
+    ej: `romanoAEntero("IX") ➞ 9`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario("IX") === 9;
+      } catch (error) {
+        return false;
+      }
     },
-    {
-      problema: "Escribe una función que resuelva el problema de las Torres de Hanoi para 'n' discos.",
-      dificultad: "Difícil",
-      ej: `torresDeHanoi(3) ➞ ["Mover disco 1 de A a C", "Mover disco 2 de A a B", "Mover disco 1 de C a B", ...]`,
+  },
+  {
+    problema: "Dada una matriz de enteros, devuelve la transpuesta de la matriz.",
+    dificultad: "Intermedio",
+    ej: `transpuesta([[1,2,3],[4,5,6]]) ➞ [[1,4],[2,5],[3,6]]`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return JSON.stringify(funcionUsuario([[1, 2, 3], [4, 5, 6]])) === JSON.stringify([[1, 4], [2, 5], [3, 6]]);
+      } catch (error) {
+        return false;
+      }
     },
-    {
-      problema: "Implementa un algoritmo de búsqueda binaria en un array ordenado.",
-      dificultad: "Difícil",
-      ej: `busquedaBinaria([1, 2, 3, 4, 5, 6], 4) ➞ 3`,
+  },
+  {
+    problema: "Escribe una función que devuelva los números primos hasta un número dado.",
+    dificultad: "Intermedio",
+    ej: `numerosPrimos(10) ➞ [2, 3, 5, 7]`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return JSON.stringify(funcionUsuario(10)) === JSON.stringify([2, 3, 5, 7]);
+      } catch (error) {
+        return false;
+      }
     },
-    {
-      problema: "Encuentra el k-ésimo elemento más grande en un array sin ordenar.",
-      dificultad: "Difícil",
-      ej: `kEsimoMayor([3, 2, 1, 5, 6, 4], 2) ➞ 5`,
+  },
+  {
+    problema: "Calcula el factorial de un número dado.",
+    dificultad: "Fácil",
+    ej: `factorial(5) ➞ 120`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario(5) === 120;
+      } catch (error) {
+        return false;
+      }
     },
-  ];
-  
-  export default problemasDeProgramacion;
-  
+  },
+  {
+    problema: "Devuelve el elemento más común en un array de strings.",
+    dificultad: "Intermedio",
+    ej: `masComun(["a", "b", "a", "c", "a", "b"]) ➞ "a"`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario(["a", "b", "a", "c", "a", "b"]) === "a";
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+  {
+    problema: "Escribe una función que devuelva el enésimo número de Fibonacci.",
+    dificultad: "Intermedio",
+    ej: `fibonacci(6) ➞ 8`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario(6) === 8;
+      } catch (error) {
+        return false;
+      }
+    },
+  },
+];
+
+export default problemasDeProgramacion;
