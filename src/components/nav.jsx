@@ -89,6 +89,11 @@ function Nav() {
           </Link>
         </li>
         <li className="nav-item">
+          <Link to="/codeo" className="nav-link" onClick={toggleMenu}>
+            Codear
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link to="/rank" className="nav-link" onClick={toggleMenu}>
             Rank
           </Link>

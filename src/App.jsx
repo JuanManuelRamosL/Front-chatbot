@@ -7,6 +7,7 @@ import Nav from "./components/nav";
 import Rank from "./pages/ranking";
 import User from "./pages/usuario";
 import Login from "./pages/loguin2";
+import Codeo from "./pages/codeo";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/rank" element={<Rank />} />
         <Route path="/user" element={<User />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/codeo" element={<Codeo />} />
       </Routes>
     </Router>
   );

@@ -53,7 +53,7 @@ const Quiz = () => {
       const response = await axios.post(
         "https://back-chatbot.vercel.app/chat",
         {
-          prompt: `quiero que le expliques al usuario la mejor manera de resolver este problema ${currentQuestion.question} el usuario elijio esta opccion y es incorrecta ${selectedAnswer} y las opcciones eran ${currentQuestion.options} la explicacion debe ser breve`,
+          prompt: `quiero que le expliques al usuario la mejor manera de resolver este problema ${currentQuestion.question} el usuario elijio esta opccion ${selectedAnswer} y las opcciones eran ${currentQuestion.options} la explicacion debe ser breve`,
         }
       );
 
@@ -96,7 +96,6 @@ const Quiz = () => {
 
   return (
     <div className="contenedor-preguntas">
-      {/* Selector de lenguaje */}
       <div className="language-selector">
         <h1>Elige un lenguaje:</h1>
         <button
