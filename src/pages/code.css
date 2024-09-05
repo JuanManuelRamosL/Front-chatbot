@@ -20,8 +20,12 @@
 }
 
 .code-title {
-    color: #00ff99;
-    font-size: 24px;
+    color: transparent;
+    font-size: 27px;
+    background: linear-gradient(to right, rgb(0, 221, 235), rgb(143, 9, 226));
+    -webkit-background-clip: text;
+    background-clip: text;
+    display: block;
 }
 
 .code-problem {
@@ -35,8 +39,12 @@
 }
 
 .code-example {
-    color: #00ff99;
-    font-size: 18px;
+    color: transparent;
+    font-size: 25px;
+    background: linear-gradient(to right, rgb(0, 221, 235), rgb(143, 9, 226));
+    -webkit-background-clip: text;
+    background-clip: text;
+    display: block;
 }
 
 .code-button {
