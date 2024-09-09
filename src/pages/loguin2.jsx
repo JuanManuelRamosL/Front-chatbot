@@ -44,6 +44,7 @@ function Login() {
       // Dispatch para guardar el usuario en el estado global
       dispatch(createUser(userData));
     } catch (error) {
+      alert("Hubo un error en el registro");
       console.error("Error registering user", error);
     }
   };
@@ -53,6 +54,7 @@ function Login() {
       const user = await login(email, password);
       console.log("User logged in successfully", user);
     } catch (error) {
+      alert("Hubo un error al loguear");
       console.error("Error logging in", error);
     }
   };

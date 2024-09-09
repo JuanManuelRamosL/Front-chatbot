@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "./code.css";
 import problemasDeProgramacion from "../preguntas/preguntasCodigo"; // Importa el array de preguntas
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { sumaE, updateUser } from "../redux/userActions";
 
 function Codeo() {
+  const [user, setUser] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(
     problemasDeProgramacion[
       Math.floor(Math.random() * problemasDeProgramacion.length)
@@ -12,7 +16,20 @@ function Codeo() {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [explanation, setExplanation] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
   // Función para cambiar la pregunta actual por una aleatoria
   const changeQuestion = () => {
     const randomQuestion =
@@ -35,6 +52,17 @@ function Codeo() {
     if (isCorrect) {
       setExplanation("¡Bien hecho! Tu respuesta es correcta.");
       setError("");
+      if (user) {
+        const userData = {
+          email: user.email,
+          puntaje: 5,
+        };
+        const email = {
+          email: user.email,
+        };
+        dispatch(updateUser(userData));
+        dispatch(sumaE(email));
+      }
     } else {
       // Si la respuesta es incorrecta, llamar a la función de IA en el servidor
       try {
