@@ -316,7 +316,21 @@ const problemasDeProgramacion = [
         return false;
       }
     },
-  },
+  }, 
+  {
+    problema : "Escribi una funcion que se le pase por parametro un numero que sera el numero de años en humano y debes devolver un arry donde el peimer valor sea el año en humano el 2 sea el año en gato y el 3 en perro año gato 1 = 15 año 2 gato = 9 resto de años gato = 4",
+    dificultad:"Difícil",
+    ej:`(1) ➞[1,15,15] ,(10)➞ [10,56,64]`,
+    test: (respuestaUsuario) => {
+      try {
+        const funcionUsuario = new Function('return ' + respuestaUsuario)();
+        return funcionUsuario(10) ===  JSON.stringify([10,56,64]);
+      } catch (error) {
+        return false;
+      }
+    },
+  }
 ];
 
 export default problemasDeProgramacion;
+

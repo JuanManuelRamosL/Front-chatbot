@@ -16,6 +16,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState(""); // Nuevo campo para el nombre del usuario
+  const [errorMessage, setErrorMessage] = useState(""); // Nuevo estado para el mensaje de error
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
 
@@ -54,8 +56,8 @@ function Login() {
       const user = await login(email, password);
       console.log("User logged in successfully", user);
     } catch (error) {
-      alert("Hubo un error al loguear");
-      console.error("Error logging in", error);
+      setErrorMessage("Hubo un error al loguear");
+      setShowModal(true); // Mostrar la modal
     }
   };
 
@@ -173,6 +175,14 @@ function Login() {
                 <p className="text-button-google">Iniciar Sesión con Google</p>
               </button>
             </div>
+          </div>
+        </div>
+      )}
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <p>{errorMessage}</p>
+            <button onClick={() => setShowModal(false)}>Cerrar</button>
           </div>
         </div>
       )}

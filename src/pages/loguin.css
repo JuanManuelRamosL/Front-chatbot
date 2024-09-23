@@ -23,7 +23,7 @@
     border-right: 4px solid #ccc;
     width: 10ch;
     animation: typing 1s steps(12),
-      blink .5s infinite step-end alternate;
+        blink .5s infinite step-end alternate;
     overflow: hidden;
     background: linear-gradient(to right, rgb(0, 221, 235), rgb(143, 9, 226));
     -webkit-background-clip: text;
@@ -32,15 +32,15 @@
 
 @keyframes typing {
     from {
-      width: 0
+        width: 0
     }
-  }
-  
-  @keyframes blink {
+}
+
+@keyframes blink {
     50% {
-      border-color: transparent
+        border-color: transparent
     }
-  }
+}
 
 .welcome-container,
 .form-container {
@@ -290,4 +290,68 @@
 .text-button-google {
     font-size: 16px;
     font-weight: 600;
+}
+
+/* Estilos de la modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo oscuro translúcido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Asegura que la modal esté por encima de otros elementos */
+}
+
+.modal-content {
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    border: 1px solid #fff;
+}
+
+.modal p {
+    color: #fff;
+    background-color: #e74c3c;
+    /* Rojo para indicar error */
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.modal button {
+    background-color: #e74c3c;
+    /* Botón rojo */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.modal button:hover {
+    background-color: #c0392b;
+    /* Color más oscuro al pasar el ratón */
+}
+
+.modal button:focus {
+    outline: none;
+}
+
+.modal button:active {
+    background-color: #a93226;
+    /* Color más oscuro al hacer clic */
 }
